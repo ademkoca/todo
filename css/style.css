@@ -3,12 +3,14 @@
     --text: #181818;
     --elements: #0a58ca;
     --input: #ffffff;
+    --button-text: #ffffff;
 
 }
 [data-theme="dark"] {
     --background: #656565;
     --text: #e0e0e0;
-    --elements: #808782;
+    --elements: #ffffff;
+    --button-text: #000000;
 
 }
 button:hover {
@@ -66,6 +68,7 @@ ul {
   button[type=submit]{
       background-color: var(--elements) !important;
       border-color: var(--elements) !important;
+      color: var(--button-text);
   }
 
   h1 {
