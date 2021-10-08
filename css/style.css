@@ -24,8 +24,10 @@ button:hover {
   background-color: var(--elements);
 }
 
-html {
+html , body{
     background-color: var(--background);
+    margin: 0;
+    height: 100%;
 }
 
 ul {
@@ -128,7 +130,3 @@ ul {
        margin-right: 5px;
        color: var(--text);
    }
-
-@media screen {
-    
-}
