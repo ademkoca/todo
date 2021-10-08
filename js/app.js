@@ -113,30 +113,44 @@ function deleteTodo(id) {
     addToLocalStorage(todos);
 }
 
-var darkTheme=0;
-function switchTheme(e) {
+// var darkTheme=0;
+// function switchTheme(e) {
 
     
-    if (darkTheme==0) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        darkTheme=1;
-        document.querySelector('.bi-moon').classList.add('bi-moon-fill');
-        document.querySelector('.bi-moon-fill').classList.remove('bi-moon');
+//     if (darkTheme==0) {
+//         document.documentElement.setAttribute('data-theme', 'dark');
+//         localStorage.setItem('theme', 'dark');
+//         darkTheme=1;
+//         document.querySelector('.bi-moon').classList.add('bi-moon-fill');
+//         document.querySelector('.bi-moon-fill').classList.remove('bi-moon');
         
-    }
-    else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-        darkTheme=0; 
-        document.querySelector('.bi-moon-fill').classList.add('bi-moon');
-        document.querySelector('.bi-moon').classList.remove('bi-moon-fill');
-    }    
+//     }
+//     else {
+//         document.documentElement.setAttribute('data-theme', 'light');
+//         localStorage.setItem('theme', 'light');
+//         darkTheme=0; 
+//         document.querySelector('.bi-moon-fill').classList.add('bi-moon');
+//         document.querySelector('.bi-moon').classList.remove('bi-moon-fill');
+//     }    
 
 
-}
+// }
 
-toggleSwitch=document.getElementById('dark-mode-switch');
+// toggleSwitch=document.getElementById('dark-mode-switch');
+
+
+// const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
+
+// if (currentTheme) {
+//     document.documentElement.setAttribute('data-theme', currentTheme);
+
+//     if (currentTheme === 'dark') {
+//         document.querySelector('.bi-moon').classList.add('bi-moon-fill');
+//         document.querySelector('.bi-moon-fill').classList.remove('bi-moon');
+//     }
+// }
+
+const toggleSwitch = document.getElementById('flexSwitchCheckDefault');
 toggleSwitch.addEventListener('click', switchTheme, false);
 
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
@@ -145,7 +159,21 @@ if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
 
     if (currentTheme === 'dark') {
-        document.querySelector('.bi-moon').classList.add('bi-moon-fill');
-        document.querySelector('.bi-moon-fill').classList.remove('bi-moon');
+        toggleSwitch.checked = true;
     }
+}
+
+function switchTheme(e) {
+
+    
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+    }
+    else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light'); 
+    }    
+
+
 }

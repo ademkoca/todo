@@ -1,3 +1,7 @@
+*{
+    box-sizing: border-box;
+}
+
 :root {
     --background: #ffffff;
     --text: #181818;
@@ -89,7 +93,7 @@ ul {
   }
 
   #main-container {
-      height: 100vh;
+      /* height: 100vh; */
       background-color: var(--background) !important;
   }
 
@@ -100,6 +104,9 @@ ul {
     color: var(--text);
   }
 
+  .form-check-label {
+      color: var(--text);
+  }
   footer {
     background-color: var(--background);
     text-align: center;
@@ -122,3 +129,6 @@ ul {
        color: var(--text);
    }
 
+@media screen {
+    
+}
