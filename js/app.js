@@ -151,6 +151,7 @@ function deleteTodo(id) {
 // }
 
 const toggleSwitch = document.getElementById('flexSwitchCheckDefault');
+// const toggleSwitchLabel = document.querySelector('.form-check-label');
 toggleSwitch.addEventListener('click', switchTheme, false);
 
 const currentTheme = localStorage.getItem('theme') ? localStorage.getItem('theme') : null;
@@ -169,10 +170,13 @@ function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
+        // toggleSwitchLabel.innerHTML="Light mode";
+
     }
     else {
         document.documentElement.setAttribute('data-theme', 'light');
         localStorage.setItem('theme', 'light'); 
+        // toggleSwitchLabel.innerHTML="Dark mode";
     }    
 
 
