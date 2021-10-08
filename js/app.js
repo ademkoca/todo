@@ -181,3 +181,20 @@ function switchTheme(e) {
 
 
 }
+
+const resize_ob = new ResizeObserver(function(entries) {
+	// since we are observing only a single element, so we access the first element in entries array
+	let rect = entries[0].contentRect;
+
+	// current width & height
+	let height = rect.height;
+    console.log('Current Height : ' + height);
+    if(height>288) {
+        document.getElementById('todo-list').classList.add('scroll');
+    }
+    else {
+        document.getElementById('todo-list').classList.remove('scroll');}
+});
+
+// start observing for resize
+resize_ob.observe(document.querySelector(".todo-items"));
