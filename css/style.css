@@ -108,6 +108,7 @@ ul {
 
   .form-check-label {
       color: var(--text);
+      font-size: .8rem;
   }
   footer {
     background-color: var(--background);
@@ -130,3 +131,12 @@ ul {
        margin-right: 5px;
        color: var(--text);
    }
+
+   /* @media screen and (max-width: 435px) {
+       .form-check-label {
+           max-width: 50px;
+       }
+       .form-check-input {
+           margin-top: 15px;
+       }
+   } */
