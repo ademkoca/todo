@@ -1,7 +1,8 @@
 :root {
     --background: #ffffff;
     --text: #181818;
-    --elements: #0a58ca;
+    --elements: #ffffff;
+    --button-back: #0a58ca;
     --input: #ffffff;
     --button-text: #ffffff;
 
@@ -10,6 +11,7 @@
     --background: #1c1c1e;
     --text: #fefefe;
     --elements: #ffffff;
+    --button-back: #ffffff;
     --button-text: #000000;
 
 }
@@ -30,6 +32,8 @@ ul {
 
   .item {
       background-color: var(--elements);
+      overflow-wrap: break-word;
+      white-space: normal;
   }
 
   .item:first-child {
@@ -61,14 +65,16 @@ ul {
       background-color: var(--background);
   }
 
-  input {
-      background-color: var(--input) !important;
-  }
-
   button[type=submit]{
-      background-color: var(--elements) !important;
+      background-color: var(--button-back) !important;
       border-color: var(--elements) !important;
       color: var(--button-text);
+  }
+
+  button[type=button] {
+      position: absolute;
+      right: 1rem;
+      top: .5rem;
   }
 
   h1 {
@@ -108,3 +114,4 @@ ul {
        margin-right: 5px;
        color: var(--text);
    }
+

@@ -34,7 +34,7 @@ function renderTodos(todos) {
         const checked = item.completed ? 'checked' : null;
 
         const li = document.createElement('li');
-        li.setAttribute('class', '"item list-group-item');
+        li.setAttribute('class', 'item list-group-item position-relative');
         li.setAttribute('data-key', item.id);
 
         if (item.completed===true) {
@@ -44,10 +44,14 @@ function renderTodos(todos) {
         li.innerHTML= `
         <input class="checkbox" type="checkbox" ${checked}>
                   ${item.name}
-                  <button type="button" class="btn-close delete-button" aria-label="Close"></button>
+                  <button type="button" class="btn-close delete-button" aria-label="Close"></button> 
         `;
 
         todoItemsList.append(li);
+
+        if(document.querySelector('.todo-items').hasChildNodes()) {
+            document.getElementById('success').classList.add('invisible');
+        }
 
     })
 }
@@ -62,6 +66,7 @@ function getFromLocalStorage() {
     if (reference) {
         todos = JSON.parse(reference);
         renderTodos(todos);
+        document
     }
 }
 
@@ -75,6 +80,10 @@ if(event.target.type === 'checkbox') {
 if(event.target.classList.contains('delete-button')) {
 
     deleteTodo(event.target.parentElement.getAttribute('data-key'));
+
+    if(!document.querySelector('.todo-items').hasChildNodes()) {
+        document.getElementById('success').classList.remove('invisible');
+    }
 }
 
 });
