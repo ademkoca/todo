@@ -6,7 +6,7 @@ const todoItemsList = document.querySelector('.todo-items');
 
 let todos = [];
 
-todoForm.addEventListener('submit', function(event) {
+todoForm.addEventListener('submit', function (event) {
 
     event.preventDefault();
     addTodo(todoInput.value);
@@ -14,7 +14,7 @@ todoForm.addEventListener('submit', function(event) {
 
 function addTodo(item) {
 
-    if(item !== '') {
+    if (item !== '') {
 
         const todo = {
             id: Date.now(),
@@ -25,13 +25,13 @@ function addTodo(item) {
         todos.push(todo);
         addToLocalStorage(todos);
 
-        todoInput.value='';
+        todoInput.value = '';
     }
 }
 
 function renderTodos(todos) {
-    todoItemsList.innerHTML='';
-    todos.forEach(function(item) {
+    todoItemsList.innerHTML = '';
+    todos.forEach(function (item) {
 
         const checked = item.completed ? 'checked' : null;
 
@@ -39,11 +39,11 @@ function renderTodos(todos) {
         li.setAttribute('class', 'item list-group-item position-relative');
         li.setAttribute('data-key', item.id);
 
-        if (item.completed===true) {
+        if (item.completed === true) {
             li.classList.add('checked');
         }
 
-        li.innerHTML= `
+        li.innerHTML = `
         <input class="checkbox" type="checkbox" ${checked}>
                   ${item.name}
                   <button type="button" class="btn-close delete-button" aria-label="Close"></button> 
@@ -51,11 +51,12 @@ function renderTodos(todos) {
 
         todoItemsList.append(li);
 
-        if(document.querySelector('.todo-items').hasChildNodes()) {
+        if (document.querySelector('.todo-items').hasChildNodes()) {
             document.getElementById('success').classList.add('invisible');
         }
 
-    })
+    });
+    document.getElementById('newToDoItem').focus();
 }
 
 function addToLocalStorage(todos) {
@@ -68,37 +69,36 @@ function getFromLocalStorage() {
     if (reference) {
         todos = JSON.parse(reference);
         renderTodos(todos);
-        document
     }
 }
 
 getFromLocalStorage();
 
-todoItemsList.addEventListener('click', function(event) {
-if(event.target.type === 'checkbox') {
-    toggle(event.target.parentElement.getAttribute('data-key'));
-}
-
-if(event.target.classList.contains('delete-button')) {
-
-    deleteTodo(event.target.parentElement.getAttribute('data-key'));
-
-    if(!document.querySelector('.todo-items').hasChildNodes()) {
-        document.getElementById('success').classList.remove('invisible');
+todoItemsList.addEventListener('click', function (event) {
+    if (event.target.type === 'checkbox') {
+        toggle(event.target.parentElement.getAttribute('data-key'));
     }
-}
+
+    if (event.target.classList.contains('delete-button')) {
+
+        deleteTodo(event.target.parentElement.getAttribute('data-key'));
+
+        if (!document.querySelector('.todo-items').hasChildNodes()) {
+            document.getElementById('success').classList.remove('invisible');
+        }
+    }
 
 });
 
 function toggle(id) {
-    todos.forEach(function(item){
+    todos.forEach(function (item) {
 
-        if (item.id==id) {
+        if (item.id == id) {
 
-            item.completed=!item.completed;
+            item.completed = !item.completed;
         }
     }
-    
+
     );
 
     addToLocalStorage(todos);
@@ -106,8 +106,8 @@ function toggle(id) {
 
 function deleteTodo(id) {
 
-    todos = todos.filter(function(item){
-        return item.id!=id;    
+    todos = todos.filter(function (item) {
+        return item.id != id;
     });
 
     addToLocalStorage(todos);
@@ -116,14 +116,14 @@ function deleteTodo(id) {
 // var darkTheme=0;
 // function switchTheme(e) {
 
-    
+
 //     if (darkTheme==0) {
 //         document.documentElement.setAttribute('data-theme', 'dark');
 //         localStorage.setItem('theme', 'dark');
 //         darkTheme=1;
 //         document.querySelector('.bi-moon').classList.add('bi-moon-fill');
 //         document.querySelector('.bi-moon-fill').classList.remove('bi-moon');
-        
+
 //     }
 //     else {
 //         document.documentElement.setAttribute('data-theme', 'light');
@@ -166,7 +166,7 @@ if (currentTheme) {
 
 function switchTheme(e) {
 
-    
+
     if (e.target.checked) {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
@@ -175,25 +175,26 @@ function switchTheme(e) {
     }
     else {
         document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light'); 
+        localStorage.setItem('theme', 'light');
         // toggleSwitchLabel.innerHTML="Dark mode";
-    }    
+    }
 
 
 }
 
-const resize_ob = new ResizeObserver(function(entries) {
-	// since we are observing only a single element, so we access the first element in entries array
-	let rect = entries[0].contentRect;
+const resize_ob = new ResizeObserver(function (entries) {
+    // since we are observing only a single element, so we access the first element in entries array
+    let rect = entries[0].contentRect;
 
-	// current width & height
-	let height = rect.height;
+    // current width & height
+    let height = rect.height;
     console.log('Current Height : ' + height);
-    if(height>288) {
+    if (height > 288) {
         document.getElementById('todo-list').classList.add('scroll');
     }
     else {
-        document.getElementById('todo-list').classList.remove('scroll');}
+        document.getElementById('todo-list').classList.remove('scroll');
+    }
 });
 
 // start observing for resize
